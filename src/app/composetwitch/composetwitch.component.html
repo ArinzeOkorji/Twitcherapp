@@ -1,0 +1,76 @@
+<div class="main">
+  <form action="" (ngSubmit)='twitchService.particularTwitchContainer === undefined ? this.twitchService.particularUser.twitch(twitch, this.twitchService.particularUser) : this.twitchService.particularTwitch.comment(twitch, twitchService.particularUser); backToHome()' #twitch='ngForm'>
+    <div class="header">
+      <div class="backArrow">
+        <i class="fas fa-arrow-left" routerLink='/home'></i>
+      </div>
+
+      <div class="TwitchBtn">
+        <button class="btn btn-primary" type="submit" [disabled]='twitch.invalid' *ngIf='twitchService.particularTwitchContainer === undefined'>Twitch</button>
+        <button class="btn btn-primary" type="submit" [disabled]='twitch.invalid' *ngIf='twitchService.particularTwitchContainer !== undefined'>Reply</button>
+      </div>
+    </div>
+
+    <div class="body">
+
+        <div *ngIf='twitchService.particularTwitchContainer !== undefined' class='originalTwitch'>
+            <div >
+              <div class="authorInfo">
+                <div class="twitchAvatarContainer">
+                  <img
+                    src="assets/img/arinzeokorji.png"
+                    id="twitchAvatar"
+                    alt="Author's avatar"
+                  />
+                </div>
+              </div>
+            </div>
+            <div >
+                <div class='authorNames'>
+                    <span>{{this.twitchService.particularTwitch.author.displayname}}</span>
+                    <span class='handle'>@{{this.twitchService.particularTwitch.author.handle}}</span>
+                    <span class="twitchDate"> · Apr 23</span>
+                  </div>
+
+                  <div class="twitchContent">
+                      <p>
+
+                          {{this.twitchService.particularTwitch.message.twitchField}}
+
+                        </p>
+                  </div>
+
+                  <div class="replyingTo">
+                    <span>Replying to <span class="blueHandle">@{{this.twitchService.particularTwitch.author.handle}}</span></span>
+                  </div>
+
+
+            </div>
+        </div>
+
+      <div class="main-container">
+        <div class="user-avatar">
+          <img
+            class="avatarImg"
+            src="assets/img/arinzeokorji.png"
+            alt="User's avatar"
+          />
+        </div>
+
+        <div class="message-container">
+          <div>
+            <textarea
+              name="twitchField"
+              id="twitchField"
+              cols="30"
+              rows="10"
+              placeholder="What's happening?"
+              ngModel
+              required
+            ></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

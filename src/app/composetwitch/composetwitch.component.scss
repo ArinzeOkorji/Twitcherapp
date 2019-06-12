@@ -1,0 +1,124 @@
+$lightGrey: rgb(101, 119, 134);
+
+/* Page header */
+
+.header {
+  display: flex;
+  padding: 10px 15px;
+  padding-left: 10px;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #eee;
+}
+
+.backArrow i {
+  color: blue;
+}
+/* Icons */
+[class~="fas"] {
+  padding: 10px;
+  padding-left: 3px;
+}
+
+/* Button */
+.btn {
+  height: 27px;
+  width: 68px;
+  font-weight: bolder;
+  border-radius: 144px;
+  background: none;
+}
+
+.btn-primary {
+  background-color: blue;
+  border: none;
+  color: #fff;
+}
+
+/* Message container */
+.main-container {
+  display: grid;
+  grid-template-columns: 15% 80%;
+  grid-gap: 12px;
+  padding-top: 20px;
+
+  .user-avatar {
+    padding: 0 12px;
+
+    /* Avatar image */
+    .avatarImg {
+      width: 35px;
+      height: 35px;
+    }
+  }
+
+  #twitchField {
+    height: 100px;
+    border: none;
+    background-color: rgb(233, 235, 236);
+    border-radius: 10px;
+    width: 92.5%;
+    padding-top: 10px;
+    padding-left: 11px;
+    font-size: 16px;
+  }
+}
+
+
+/* For replies page */
+.originalTwitch {
+  display: grid;
+  grid-template-columns: 15% 80%;
+  grid-gap: 12px;
+  padding-top: 20px;
+}
+.authorInfo {
+  padding: 0 12px;
+}
+
+#twitchAvatar {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+}
+
+.authorNames {
+  display: flex;
+  font-size: 14px;
+      margin-bottom: 2px;
+      align-items: center;
+      width: 96%;
+
+  .displayName {
+
+  }
+
+  .handle, .twitchDate {
+    color:  $lightGrey;
+  }
+
+  .handle {
+    margin-left: 5px;
+  }
+
+  .twitchDate {
+    margin-left: auto;
+  }
+
+}
+
+.twitchContent {
+  font-size: 14px;
+  color: #616161;
+  padding-bottom: 14px;
+}
+
+.replyingTo {
+  font-size: 14px;
+  color: rgb(101, 119, 134);
+}
+
+.blueHandle {
+  color: rgb(27, 149, 224);
+}

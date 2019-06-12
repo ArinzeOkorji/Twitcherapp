@@ -1,0 +1,122 @@
+<div class='main'>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="backArrow">
+      <i class="fas fa-arrow-left" routerLink="/home"></i>
+
+      <h4>Twitch</h4>
+    </div>
+  </div>
+
+  <!-- Body -->
+  <div class="body">
+    <div>
+      <div >
+        <div class="authorInfo">
+          <div class="twitchAvatarContainer">
+            <img
+              src="assets/img/arinzeokorji.png"
+              id="twitchAvatar"
+              alt="Author's avatar"
+            />
+          </div>
+          <div class='authorNames'>
+            <h4>{{this.twitchService.particularTwitch.author.displayname}}</h4>
+            <h5 class='handle'>@{{this.twitchService.particularTwitch.author.handle}}</h5>
+          </div>
+        </div>
+      </div>
+      <div class='twitchContent'>
+        <p>
+
+          {{this.twitchService.particularTwitch.message.twitchField}}
+
+        </p>
+      </div>
+      <div class="twitchInfo">
+        <div class="twitchInfoTop">
+            <span class="timeofTwitch">9:14 AM · June 6, 2019</span>
+            ·
+            <a class='typeOfPlatformUsedToTwitch'>Twitter Web App</a>
+        </div>
+
+        <div class="twitchInfoBottom" *ngIf='this.twitchService.particularTwitch.showAmountOfLikes'>
+          <span class="amountOfLikes" ><strong>{{this.twitchService.particularTwitch.numberOfLikes}}</strong> Like</span>
+        </div>
+
+      </div>
+      <div class="twitchActions">
+        <div><i class="far fa-comment"></i></div>
+        <div><i class="fas fa-retweet"></i></div>
+        <div>
+          <span (click)="this.twitchService.particularTwitch.like(this.twitchService.particularTwitch.id, this.twitchService.particularUser)">
+            <i class="far fa-heart" *ngIf="this.twitchService.particularTwitch.twitchIsNotLiked"></i>
+            <i class="fas fa-heart" *ngIf="this.twitchService.particularTwitch.twitchIsLiked"></i>
+          </span></div>
+        <div><i class="fas fa-share"></i></div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="comments">
+      <!-- Single twitch -->
+    <div id="singleTwitch" *ngFor='let message of this.twitchService.particularTwitch.listOfTwitchComments'>
+        <!-- Left column containing twitch's avatar -->
+        <div class="left-column">
+          <img
+            src="assets/img/arinzeokorji.png"
+            alt="User's avatar"
+            id="twitchAvatar"
+          />
+        </div>
+
+        <!-- Right column containing message -->
+        <div class="right-column">
+          <div class="twitch-message">
+            <div class="twitcher-header">
+              <h4 class="twitcher-displayName">{{message.author.displayname}}</h4>
+              <h4 class="twitcher-username">@ {{message.author.handle}}</h4> ·
+              <span class="twitch-date">{{message.messageTime}}</span>
+            </div>
+
+            <!-- Twitch body -->
+            <div class="twitch-body" (click)='showTwitch(message)'>
+              <p>
+                {{message.message.twitchField}}
+              </p>
+
+              <!--  <fa-icon icon="coffee"></fa-icon> -->
+            </div>
+
+            <!-- Twitch footer -->
+
+            <div class="twitch-footer">
+              <div>
+                <span (click)='reply(message, twitchService.particularUser)'>
+                  <i class="far fa-comment"></i>
+                  <span *ngIf='message.showAmountOfComments'>{{message.numberOfComments}}</span>
+                 </span>
+              </div>
+              <div>
+                <span><i class="fas fa-retweet"></i> </span>
+              </div>
+              <div>
+                <span (click)="message.like(message.id, twitchService.particularUser)">
+                  <i class="far fa-heart" *ngIf="message.twitchIsNotLiked"></i>
+                  <i class="fas fa-heart" *ngIf="message.twitchIsLiked"></i>
+                  <span *ngIf='message.showAmountOfLikes'>{{message.numberOfLikes}}</span>
+                </span>
+              </div>
+              <div>
+                <i class="fas fa-share-alt"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>

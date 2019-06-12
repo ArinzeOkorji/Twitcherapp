@@ -1,0 +1,64 @@
+<div class='homeContainer'>
+  <div>
+    <!-- Single twitch -->
+    <div id="singleTwitch" *ngFor='let message of this.twitchService.particularUser.twitches'>
+      <!-- Left column containing twitch's avatar -->
+      <div class="left-column">
+        <img
+          src="assets/img/arinzeokorji.png"
+          alt="User's avatar"
+          id="twitchAvatar"
+        />
+      </div>
+
+      <!-- Right column containing message -->
+      <div class="right-column">
+        <div class="twitch-message">
+          <div class="twitcher-header">
+            <h4 class="twitcher-displayName">{{message.author.displayname}}</h4>
+            <h4 class="twitcher-username">@{{message.author.handle}}</h4> ·
+            <span class="twitch-date">{{message.messageTime}}</span>
+          </div>
+
+          <!-- Twitch body -->
+          <div class="twitch-body" (click)='showTwitch(message)'>
+            <p>
+              {{message.message.twitchField}}
+            </p>
+
+            <!--  <fa-icon icon="coffee"></fa-icon> -->
+          </div>
+
+          <!-- Twitch footer -->
+
+          <div class="twitch-footer">
+            <div>
+              <span (click)='reply(message, twitchService.particularUser)'>
+                <i class="far fa-comment"></i>
+                <span *ngIf='message.showAmountOfComments'>{{message.numberOfComments}}</span>
+               </span>
+            </div>
+            <div>
+              <span><i class="fas fa-retweet"></i> </span>
+            </div>
+            <div>
+              <span (click)="message.like(message.id, twitchService.particularUser)">
+                <i class="far fa-heart" *ngIf="message.twitchIsNotLiked"></i>
+                <i class="fas fa-heart" *ngIf="message.twitchIsLiked"></i>
+                <span *ngIf='message.showAmountOfLikes'>{{message.numberOfLikes}}</span>
+              </span>
+            </div>
+            <div>
+              <i class="fas fa-share-alt"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Compose new Twitch button -->
+    <button class="composeTwitch" type="button" (click)='composeTwitch()'>
+      <i class="fas fa-edit"></i>
+    </button>
+  </div>
+</div>

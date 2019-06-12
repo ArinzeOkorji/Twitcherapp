@@ -1,0 +1,65 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+/* User's Avatar */
+.userAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+input[type="text"] {
+  background-color: #d4d3d3;
+  border-radius: 20px;
+  margin-left: 20px;
+  width: 61%;
+  border: none;
+  padding: 10px 10px;
+}
+
+//Page header
+.pageHeader {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  margin: 10px 10px auto 10px;
+
+  .pageTitle {
+    margin-left: 20px;
+  }
+}
+
+.iconList {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  margin-top: 20px;
+  border-bottom: 1px solid rgb(133, 131, 131);
+
+  li {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 15px;
+
+    a svg {
+      height: 30px;
+      width: 30px;
+      fill: rgb(133, 131, 131);
+    }
+  }
+
+  li.active {
+    border-bottom: 4px solid blue;
+
+    a svg {
+      fill: blue;
+    }
+  }
+}
+
+.contentBody {
+  height: 100%;
+}

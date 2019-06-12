@@ -1,0 +1,66 @@
+<div class="main">
+  <form (ngSubmit)="createUser(userDetails)" #userDetails="ngForm">
+    <div class='formHeader'>
+      <h2>Sign Up</h2>
+    </div>
+    <div class='inputContainer'>
+      <label for="firstname">First Name </label>
+      <input
+        type="text"
+        id="firstname"
+        name="firstname"
+        placeholder="Enter first name"
+        ngModel
+        required
+      />
+    </div>
+    <div class='inputContainer'>
+      <label for="lastname">Last Name</label>
+      <input
+        type="text"
+        id="lastname"
+        name="lastname"
+        placeholder="Enter last name"
+        ngModel
+        required
+      />
+    </div>
+    <div class='inputContainer'>
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        placeholder="Enter password"
+        ngModel
+        required
+      />
+    </div>
+    <div class='inputContainer'>
+      <label for="displayname">Display name</label>
+      <input
+        type="text"
+        id="displayname"
+        name="displayname"
+        placeholder="Enter display name"
+        ngModel
+        required
+      />
+    </div>
+    <div class='inputContainer'>
+      <label for="handle">Handle</label>
+      <input
+        type="text"
+        id="handle"
+        name="handle"
+        placeholder="Enter handle"
+        ngModel
+        required
+      />
+    </div>
+
+    <div class="buttonContainer">
+      <button type="submit">Create account</button>
+    </div>
+  </form>
+</div>
