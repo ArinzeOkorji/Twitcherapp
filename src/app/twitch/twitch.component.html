@@ -19,10 +19,11 @@
               src="assets/img/arinzeokorji.png"
               id="twitchAvatar"
               alt="Author's avatar"
+              routerLink='/{{this.twitchService.particularTwitch.author.handle}}'
             />
           </div>
           <div class='authorNames'>
-            <h4>{{this.twitchService.particularTwitch.author.displayname}}</h4>
+            <h4 routerLink='/{{this.twitchService.particularTwitch.author.handle}}'>{{this.twitchService.particularTwitch.author.displayname}}</h4>
             <h5 class='handle'>@{{this.twitchService.particularTwitch.author.handle}}</h5>
           </div>
         </div>
@@ -70,6 +71,7 @@
             src="assets/img/arinzeokorji.png"
             alt="User's avatar"
             id="twitchAvatar"
+            routerLink='/{{message.author.handle}}'
           />
         </div>
 
@@ -77,7 +79,7 @@
         <div class="right-column">
           <div class="twitch-message">
             <div class="twitcher-header">
-              <h4 class="twitcher-displayName">{{message.author.displayname}}</h4>
+              <h4 class="twitcher-displayName" routerLink='/{{message.author.handle}}'>{{message.author.displayname}}</h4>
               <h4 class="twitcher-username">@ {{message.author.handle}}</h4> ·
               <span class="twitch-date">{{message.messageTime}}</span>
             </div>
@@ -104,7 +106,7 @@
                 <span><i class="fas fa-retweet"></i> </span>
               </div>
               <div>
-                <span (click)="message.like(message.id, twitchService.particularUser)">
+                <span (click)="message.like(message.id, twitchService.particularUser); twitchService.particularUser.addToLikes(message)">
                   <i class="far fa-heart" *ngIf="message.twitchIsNotLiked"></i>
                   <i class="fas fa-heart" *ngIf="message.twitchIsLiked"></i>
                   <span *ngIf='message.showAmountOfLikes'>{{message.numberOfLikes}}</span>

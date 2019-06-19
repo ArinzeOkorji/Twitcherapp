@@ -1,3 +1,15 @@
-<p *ngFor='let user of this.twitchService.userSearchResultsList'>
-  <span>{{user.handle}}</span>
-</p>
+<!-- <ul *ngFor='let user of this.twitchService.userSearchResultsList'>
+  <li><a>{{user.handle}}</a></li>
+</ul> -->
+
+<div>
+  <div class="singleResult" routerLink='/{{user.handle}}' *ngFor='let user of this.twitchService.userSearchResultsList'>
+    <div class='left-column'>
+      <img src='assets/img/arinzeokorji.png'>
+    </div>
+    <div class="right-column">
+      <h4>{{ user.displayname }}</h4>
+      <h5>@{{ user.handle }}</h5>
+    </div>
+  </div>
+</div>

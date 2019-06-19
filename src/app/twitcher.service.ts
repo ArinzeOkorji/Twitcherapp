@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: "root"
@@ -23,7 +24,7 @@ export class TwitcherService {
     this.selectedTwitchSource.next(newSelectedTwitch);
   }
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   storeUser(user, userId) {
     this.createdUserId = userId;
@@ -52,22 +53,20 @@ export class TwitcherService {
       const inputLength = event.target.value.length;
       const queryLimit = inputLength;
 
-
-
       let queryWord = this.storedUserList[i].handle.slice(0, queryLimit);
       let lowercaseQW = queryWord.toLowerCase();
 
-      console.log(lowercaseQW)
+      console.log(lowercaseQW);
 
       //let queryWord = queryLetters.join();
 
-      if(lowercaseQW === event.target.value) {
+      if (lowercaseQW === event.target.value) {
         this.userSearchResultsList.unshift(this.storedUserList[i]);
 
         console.log(this.userSearchResultsList);
       }
 
-      if(event.target.value === '') {
+      if (event.target.value === "") {
         this.userSearchResultsList = [];
       }
     }
@@ -80,4 +79,22 @@ export class TwitcherService {
     this.messageArray.unshift(twitchMessage);
     console.log(this.messageArray)
   } */
+
+  login(loginDetails) {
+    this.particularUser = this.storedUserList.find(user => {
+      return (
+        user.password === loginDetails.value.password &&
+        user.handle === loginDetails.value.username
+      );
+    });
+
+    if (this.particularUser) {
+      this.router.navigateByUrl("/home");
+
+    }
+      else alert("Incorrect password");
+
+
+
+  }
 }

@@ -1,0 +1,72 @@
+/* Single Twitch */
+#singleTwitch {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  height: max-content;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  padding-top: 10px;
+
+  /* Twiter avatar left column */
+  .left-column {
+    padding: 0 10px;
+
+    /* Twitcher avatar */
+    #twitchAvatar {
+      height: 40px;
+      width: 40px;
+    }
+  }
+
+  .right-column {
+
+    .twitch-message {
+      width: 90%;
+
+      .twitcher-header {
+        display: flex;
+
+        .twitcher-username {
+          color: grey;
+          margin-left: 10px;
+
+
+        }
+
+        .twitch-date {
+          color: grey;
+          margin-left: auto;
+        }
+      }
+
+      .twitch-body {
+        margin-top: 7px;
+
+        p {
+          line-height: 1.4em;
+          color: #222;
+          margin-top: 5px;
+        }
+      }
+
+      .twitch-footer {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+
+        span i[class~='far'], span i[class~='fas'] {
+          margin-right: 5px;
+        }
+
+        .fas.fa-heart {
+          color: red;
+        }
+
+        i[class~='fa-share-alt'] {
+          margin-left: auto;
+        }
+      }
+    }
+
+  }
+}

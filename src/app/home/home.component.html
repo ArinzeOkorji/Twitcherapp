@@ -8,6 +8,7 @@
           src="assets/img/arinzeokorji.png"
           alt="User's avatar"
           id="twitchAvatar"
+          routerLink='/{{message.author.handle}}'
         />
       </div>
 
@@ -42,7 +43,7 @@
               <span><i class="fas fa-retweet"></i> </span>
             </div>
             <div>
-              <span (click)="message.like(message.id, twitchService.particularUser)">
+              <span (click)="message.like(message.id, twitchService.particularUser); twitchService.particularUser.addToLikes(message)">
                 <i class="far fa-heart" *ngIf="message.twitchIsNotLiked"></i>
                 <i class="fas fa-heart" *ngIf="message.twitchIsLiked"></i>
                 <span *ngIf='message.showAmountOfLikes'>{{message.numberOfLikes}}</span>

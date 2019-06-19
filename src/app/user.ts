@@ -2,6 +2,7 @@ import { SingleTwitch } from './single-twitch';
 import * as moment from 'moment';
 
 export class User {
+  followStatus = 'Follow';
   firstName;
   lastName;
   username;
@@ -29,6 +30,30 @@ export class User {
     //getMessage(this.singleTwitch);
     this.twitches.unshift(this.singleTwitch);
 
+  }
+
+  addToLikes(particularTwitch) {
+    if(this.likedTwitches.includes(particularTwitch)) {
+
+      this.likedTwitches = this.likedTwitches.filter(m => {
+        return m !== particularTwitch;
+      });
+    } else {
+      this.likedTwitches.push(particularTwitch);
+    }
+
+  }
+
+  follow(selectedUser) {
+    if (this.following.includes(selectedUser)) {
+      this.following = this.following.filter(followedUser => {
+        return followedUser !== selectedUser;
+      });
+      this.followStatus = 'Follow';
+    } else {
+      this.following.push(selectedUser);
+      this.followStatus = 'Following';
+    }
   }
 
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TwitcherService } from "../twitcher.service";
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,11 +14,13 @@ export class MainComponent implements OnInit {
     'Home'
   ];
 
+  sideMenu;
+
   pageTitle = true;
   searchBox = false;
 
 
-  constructor(twitchService: TwitcherService) {
+  constructor(twitchService: TwitcherService, private router: Router) {
     this.twitchService = twitchService;
    }
 
@@ -37,5 +40,15 @@ export class MainComponent implements OnInit {
       this.searchBox = true;
     }
 
+  }
+
+  toggleSideMenu() {
+    this.sideMenu = !this.sideMenu;
+  }
+
+  logout() {
+    this.twitchService.particularUser = null;
+
+    this.router.navigateByUrl('/log-in');
   }
 }

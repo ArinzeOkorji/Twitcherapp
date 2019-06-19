@@ -1,0 +1,29 @@
+.singleResult {
+  display: grid;
+  grid-template-columns: 15% 85%;
+    padding-left: 13px;
+    padding-bottom: 14px;
+    padding-top: 16px;
+    border-bottom: 1px solid #c1bebe;
+
+  .left-column {
+
+    img {
+      height: 41.25px;
+      width: 41.25px;
+      border-radius: 50%;
+    }
+  }
+
+  .right-column {
+
+    h5 {
+      color: #657786;
+    }
+
+    h4 {
+      color: #14171a;
+    }
+
+  }
+}

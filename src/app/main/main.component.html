@@ -1,8 +1,35 @@
-<div style="height: 100%;">
+<div class='main' [ngClass]='{active: sideMenu}'>
   <div class="pageHeader">
-    <img src="assets/img/arinzeokorji.png" class="userAvatar" alt="User's avatar">
+    <div>
+        <img src="assets/img/arinzeokorji.png" class="userAvatar" alt="User's avatar"  (click)='toggleSideMenu()'>
+
+        <div class="sideMenu" [ngClass]='{active: sideMenu}'>
+          <div class="sideMenuHeader">
+            <h3>Account Info</h3>
+            <span (click)='toggleSideMenu()'>&times;</span>
+          </div>
+
+          <div class="sideMenuBody">
+            <div style='margin-bottom: 15px;'>
+                <img src="assets/img/arinzeokorji.png" class="userAvatar" alt="User's avatar" routerLink='/{{this.twitchService.particularUser.handle}}'>
+                <div class="userDisplayName">{{ this.twitchService.particularUser.displayname }}</div>
+                <div>@{{ this.twitchService.particularUser.handle }}</div>
+            </div>
+
+            <div>
+              <span class="following"><span>{{ this.twitchService.particularUser.following.length}}</span> Following</span>
+              <span class="followers"><span>{{ this.twitchService.particularUser.followers.length}}</span> Followers</span>
+            </div>
+          </div>
+
+          <div class="sideMenuFooter">
+            <a (click)='logout()'>Log out</a>
+          </div>
+        </div>
+    </div>
+
     <h3 *ngIf='pageTitle' class="pageTitle">{{selectedSection[0]}}</h3>
-    <input *ngIf='searchBox' type="text" placeholder='Search Twitcher' (input)='this.twitchService.onSearch($event)'>
+    <input class='searchBox' *ngIf='searchBox' type="text" placeholder='Search Twitcher' (input)='this.twitchService.onSearch($event)'>
   </div>
 
   <div class='pageIcons'>

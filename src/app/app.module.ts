@@ -17,6 +17,9 @@ import { ComposetwitchComponent } from './composetwitch/composetwitch.component'
 import { TwitcherService } from './twitcher.service';
 import { TwitchComponent } from './twitch/twitch.component';
 import { CreateuserComponent } from './createuser/createuser.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserTwitchesSectionComponent } from './user-twitches-section/user-twitches-section.component';
+import { LogInComponent } from './log-in/log-in.component';
 // import { SingleTwitch } from './single-twitch';
 
 //import { library } from '@fortawesome/fontawesome-svg-core';
@@ -30,8 +33,10 @@ const appRoutes: Routes = [
     {path: 'messages', component: MessagesComponent},
   ]},
   {path: 'compose-twitch', component: ComposetwitchComponent},
-  {path: 'create-user', component: CreateuserComponent},
-  {path: 'twitchInfo', component: TwitchComponent}
+  {path: 'sign-up', component: CreateuserComponent},
+  {path: 'log-in', component: LogInComponent},
+  {path: 'twitchInfo', component: TwitchComponent},
+  {path: ':user-name', component: UserProfileComponent},
 ];
 
 @NgModule({
@@ -44,7 +49,10 @@ const appRoutes: Routes = [
     NotificationsComponent,
     ComposetwitchComponent,
     TwitchComponent,
-    CreateuserComponent
+    CreateuserComponent,
+    UserProfileComponent,
+    UserTwitchesSectionComponent,
+    LogInComponent
   ],
   imports: [
     BrowserModule,
