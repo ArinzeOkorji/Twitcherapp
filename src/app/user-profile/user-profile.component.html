@@ -6,7 +6,7 @@
 
     <div class="PageTitle">
       <h3>{{ selectedUser.displayname }}</h3>
-      <span>194 Tweets</span>
+      <span>{{ selectedUser.twitches.length }} Tweets</span>
     </div>
   </div>
 
@@ -18,14 +18,14 @@
     <div class="userAvatarMain">
       <img src="assets/img/arinzeokorji.png" />
 
-      <button *ngIf='selectedUser !== twitchService.particularUser' class="btn btn-primary followBtn" (click)='twitchService.particularUser.follow(selectedUser)'>{{ twitchService.particularUser.followStatus }}</button>
+      <button *ngIf='selectedUser !== twitchService.particularUser' class="btn btn-primary followBtn" (click)='twitchService.particularUser.follow(selectedUser, twitchService.particularUser)'>{{ twitchService.particularUser.followStatus }}</button>
     </div>
 
     <!-- User Details -->
     <div class="userInfo">
       <div class="userNames">
-        <div class="userDisplayName">Taylor Swift</div>
-        <div class="userHandle">@taylorswift13</div>
+        <div class="userDisplayName">{{ selectedUser.displayname }}</div>
+        <div class="userHandle">@{{ selectedUser.handle }}</div>
       </div>
 
       <div class="userBio">
@@ -33,7 +33,7 @@
       </div>
 
       <div class="userWebsiteLink">
-        <div>
+        <div *ngIf='false'>
           <a href=""><i class="fas fa-link"></i> weblink</a>
         </div>
         <div>

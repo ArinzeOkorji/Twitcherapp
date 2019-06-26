@@ -3,7 +3,7 @@
   padding: 0;
 }
 
-.main{
+.main {
   transition: 0.3s ease;
   height: 100%;
 }
@@ -17,15 +17,28 @@
   border-radius: 50%;
 }
 
-input.searchBox[type="text"] {
+.searchBox {
+  display: flex;
   background-color: #d4d3d3;
   border-radius: 20px;
   margin-left: 20px;
-  width: 61%;
+  padding-right: 10px;
   border: none;
+  align-items: center;
+  width: 67%;
+
+  i {
+    color: blue;
+  }
+}
+
+input.searchField[type="text"] {
+  width: 100%;
+  border: none;
+  background: none;
   padding: 10px 10px;
 }
-input.searchBox[type="text"]:focus {
+input.searchField[type="text"]:focus .searchBox {
   background-color: #ffffff;
   border: 1px solid blue;
 }
@@ -44,58 +57,61 @@ input.searchBox[type="text"]:focus {
 
 .sideMenu {
   position: absolute;
-    height: 100%;
-    background: #ffffff;
-    width: 80%;
-    top: 0;
-    left: -80%;
-    z-index: 1000;
-    transition: 0.3s ease;
+  height: 100%;
+  background: #ffffff;
+  width: 80%;
+  top: 0;
+  left: -80%;
+  z-index: 1000;
+  transition: 0.3s ease;
 
-    .sideMenuHeader {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid rgb(116, 115, 115);
-      padding: 5px 11px;
+  .sideMenuHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgb(116, 115, 115);
+    padding: 5px 11px;
 
-      span {
-        font-size: 30px;
-        color: blue;
-      }
+    span {
+      font-size: 30px;
+      color: blue;
+    }
+  }
+
+  .sideMenuBody {
+    padding: 15px;
+    border-bottom: 1px solid rgb(116, 115, 115);
+
+    .userDisplayName {
+      font-weight: bolder;
     }
 
-    .sideMenuBody {
-      padding: 15px;
-      border-bottom: 1px solid rgb(116, 115, 115);
-
-      .userDisplayName {
+    .followers,
+    .following {
+      span {
         font-weight: bolder;
       }
-
-      .followers, .following {
-        span {
-          font-weight: bolder;
-        }
-      }
-
-      .followers {
-        margin-left: 15px;
-      }
     }
 
-    .sideMenuFooter {
-      padding: 15px;
+    .followers {
+      margin-left: 15px;
     }
+  }
+
+  .sideMenuFooter {
+    padding: 15px;
+  }
 }
 
 .sideMenu.active {
   left: 0;
   box-shadow: 5px 0px 8px #948c8c;
-
-
 }
 
+.pageIcons {
+  position: sticky;
+  top: 0;
+}
 .iconList {
   list-style: none;
   display: flex;
@@ -111,7 +127,7 @@ input.searchBox[type="text"]:focus {
     padding-bottom: 15px;
 
     a svg {
-      height: 30px;
+      height: 20px;
       width: 30px;
       fill: rgb(133, 131, 131);
     }

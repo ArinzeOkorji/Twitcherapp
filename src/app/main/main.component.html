@@ -3,6 +3,7 @@
     <div>
         <img src="assets/img/arinzeokorji.png" class="userAvatar" alt="User's avatar"  (click)='toggleSideMenu()'>
 
+        <!-- side menu -->
         <div class="sideMenu" [ngClass]='{active: sideMenu}'>
           <div class="sideMenuHeader">
             <h3>Account Info</h3>
@@ -29,7 +30,11 @@
     </div>
 
     <h3 *ngIf='pageTitle' class="pageTitle">{{selectedSection[0]}}</h3>
-    <input class='searchBox' *ngIf='searchBox' type="text" placeholder='Search Twitcher' (input)='this.twitchService.onSearch($event)'>
+
+    <div *ngIf='searchBox' class="searchBox"  #searchBoxStyle>
+    <input class='searchField' (click)='focusSearchField()' #searchField  type="text" placeholder='Search Twitcher' (input)='consoles($event); this.twitchService.onSearch($event)'>
+    <i class="fas fa-times-circle" *ngIf='clearBtn' (click)='clearSearchField()'></i>
+    </div>
   </div>
 
   <div class='pageIcons'>

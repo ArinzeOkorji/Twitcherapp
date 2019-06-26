@@ -1,9 +1,9 @@
-import { Injectable } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
-import { Router } from "@angular/router";
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class TwitcherService {
   createdUserId;
@@ -17,7 +17,10 @@ export class TwitcherService {
      return user.userId === this.createdUserId;
     }); */
 
-  selectedTwitchSource = new BehaviorSubject("");
+    homeTwitchesSource = new BehaviorSubject('');
+    homeTwitches = this.homeTwitchesSource.asObservable();
+
+  selectedTwitchSource = new BehaviorSubject('');
   selectedTwitch = this.selectedTwitchSource.asObservable();
 
   displaySelectedTwitch(newSelectedTwitch) {
@@ -66,7 +69,7 @@ export class TwitcherService {
         console.log(this.userSearchResultsList);
       }
 
-      if (event.target.value === "") {
+      if (event.target.value === '') {
         this.userSearchResultsList = [];
       }
     }
@@ -89,10 +92,10 @@ export class TwitcherService {
     });
 
     if (this.particularUser) {
-      this.router.navigateByUrl("/home");
+      this.router.navigateByUrl('/home');
 
     }
-      else alert("Incorrect password");
+      else alert('Incorrect password');
 
 
 

@@ -1,5 +1,6 @@
 import { SingleTwitch } from './single-twitch';
 import * as moment from 'moment';
+import { TwitcherService } from './twitcher.service';
 
 export class User {
   followStatus = 'Follow';
@@ -10,8 +11,8 @@ export class User {
   singleTwitch;
   userId = Math.random() * 2;
 
-  constructor() {
-  }
+
+  constructor(private twitchService: TwitcherService) {}
 
   twitches = [];
 
@@ -20,31 +21,32 @@ export class User {
   likedTwitches = [];
 
   twitch(twitch, particularUser) {
-    let date = new Date();
+    const date = new Date();
 
-    let twitchId = Math.random() * 2;
-    let twitchDate = moment(date).fromNow(true);
+    const twitchId = Math.random() * 2;
+    const twitchDate = moment(date).fromNow(true);
 
-
-    this.singleTwitch = new SingleTwitch(twitch.value, twitchId, twitchDate, particularUser);
-    //getMessage(this.singleTwitch);
+    this.singleTwitch = new SingleTwitch(
+      twitch.value,
+      twitchId,
+      twitchDate,
+      particularUser
+    );
+    // getMessage(this.singleTwitch);
     this.twitches.unshift(this.singleTwitch);
-
   }
 
   addToLikes(particularTwitch) {
-    if(this.likedTwitches.includes(particularTwitch)) {
-
+    if (this.likedTwitches.includes(particularTwitch)) {
       this.likedTwitches = this.likedTwitches.filter(m => {
         return m !== particularTwitch;
       });
     } else {
       this.likedTwitches.push(particularTwitch);
     }
-
   }
 
-  follow(selectedUser) {
+  follow(selectedUser, particularUser) {
     if (this.following.includes(selectedUser)) {
       this.following = this.following.filter(followedUser => {
         return followedUser !== selectedUser;
@@ -54,9 +56,13 @@ export class User {
       this.following.push(selectedUser);
       this.followStatus = 'Following';
     }
+
+    if (selectedUser.followers.includes(particularUser)) {
+      selectedUser.followers = selectedUser.followers.filter(followingUser => {
+        return followingUser !== particularUser;
+      });
+    } else {
+      selectedUser.followers.push(particularUser);
+    }
   }
-
-
-
-
 }

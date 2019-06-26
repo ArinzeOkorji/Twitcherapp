@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { TwitcherService } from "../twitcher.service";
 import { Router } from '@angular/router';
 
@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
+  @ViewChild('searchBoxStyle') searchBoxStyle: ElementRef;
+  @ViewChild('searchField') searchField: ElementRef;
   twitchService;
   selectedSection = [
     'Home'
@@ -18,6 +20,7 @@ export class MainComponent implements OnInit {
 
   pageTitle = true;
   searchBox = false;
+  clearBtn = false;
 
 
   constructor(twitchService: TwitcherService, private router: Router) {
@@ -35,12 +38,37 @@ export class MainComponent implements OnInit {
     if(section !== 'Search') {
       this.pageTitle = true;
       this.searchBox = false;
+      this.clearBtn = false;
     } else {
       this.pageTitle = false;
       this.searchBox = true;
     }
 
   }
+
+  focusSearchField() {
+    if (!(this.searchBoxStyle.nativeElement.style.backgroundColor === '#ffffff')) {
+      this.searchBoxStyle.nativeElement.style.backgroundColor = '#ffffff';
+      this.searchBoxStyle.nativeElement.style.borderWidth = '1px';
+      this.searchBoxStyle.nativeElement.style.borderColor = 'blue';
+      this.searchBoxStyle.nativeElement.style.borderStyle = 'solid';
+    } else {
+      this.searchBoxStyle.nativeElement.style.backgroundColor = '#d4d3d3';
+      this.searchBoxStyle.nativeElement.style.border = 'none';
+    }
+  }
+
+  consoles(event) {
+
+    console.log(event.target.value.length);
+
+    if (event.target.value.length >= 1) {
+      this.clearBtn = true;
+    } else {
+      this.clearBtn = false;
+    }
+  }
+
 
   toggleSideMenu() {
     this.sideMenu = !this.sideMenu;
@@ -51,4 +79,12 @@ export class MainComponent implements OnInit {
 
     this.router.navigateByUrl('/log-in');
   }
+
+  clearSearchField() {
+    this.searchField.nativeElement.value = '';
+    this.clearBtn = false;
+
+    this.twitchService.userSearchResultsList = [];
+  }
+
 }
